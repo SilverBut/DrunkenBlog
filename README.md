@@ -1,22 +1,27 @@
 # DrunkenBlog 
 
-Drunken is a simple blog. It synchronously updates with [Silver's Blog](http://sonyis.science). The blog is based on Python, and use Markdown as its source.
+Drunken is a simple blog structure following Apache license. It synchronously updates with [Silver's Blog](http://sonyis.science). The blog is based on Python, and use Markdown as its source.
 
 The blog is still under development now.
 
 ## Blog Structure 
 
-Based on Markdown files to format the article, and use simple file storage techs to save the markdown file. A small render is used to convert markdown files to rendered HTML parts and meta infos, which will be stored in Redis as the cache, and will remove old cache in time. Server will automatically sync markdown source file by the way you'd like to use, such as Google Drive, Dropbox, etc. Use Disqus as the comment tool. 
+Based on Markdown files to format the article, and use simple file storage techs to save the markdown file. A built-in render is used to convert markdown files to rendered HTML parts and meta infos. Use Disqus as the comment tool. 
 
-## Functions 
-* Auto sync 
-* Search by Tag/Time 
-* Special Pages, such as "About" 
-* Simple templates 
+## Functions
+* Simple templates
+* Article list(sort by date and time)
+* Article pages and special pages
+* Disqus comment
 
 ## Directory List
-	\			#root folder
-	|--main.py		# main script
-	|--template		# template folder
-	|--static		# static file folder, such as .css
-	|--documents	# where *.md exists
+	\-                            # root folder
+	 |--main.py                      # main script
+	 |--config.yaml.sample           # Example config file
+	 |--config.yaml                  # config file
+	 |--template                     # template folder
+	 |--static                       # static file folder, such as .css or err htmls
+	 |--documents                    # where *.md exists
+	 |--controller                   # will be used to handle requests
+	 |--extends                      # plugins and extend modules
+	 |--util                         # function modules such as renderer
