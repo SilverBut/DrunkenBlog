@@ -22,6 +22,5 @@ class NotFoundHandler(BaseHandler):
         self.set_status(404)
         self.custom_error("File Not Found", status_code = 404)
 
-
     def post(self, *args, **kwargs):
         self.get(*args, **kwargs)

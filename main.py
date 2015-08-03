@@ -11,7 +11,7 @@ setting = {
 }
 
 application = tornado.web.Application([
-    (r"^/\d.*", "controller.TestHandler.TestHandler")
+    (r"^/\d.*", "controller.testdemo.TestHandler")
 ], **setting)
 
 if __name__ == "__main__":
