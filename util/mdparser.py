@@ -2,7 +2,7 @@
 __author__='silver'
 import markdown
 import re
-from ast import literal_eval
+from ast import literal_eval as eval
 
 """
 Class: util.mdparser.article
