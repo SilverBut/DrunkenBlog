@@ -19,7 +19,7 @@ def __ReadConfigFile__():
         with open(config_filename,'r') as fin:
             conf = yaml.load(fin)
     except:
-        print("Has no or invaild config file. Use default value")
+        warning("Has no or invaild config file. Use default value")
     conf   
 
 # run config
@@ -52,6 +52,6 @@ if __name__ == "__main__":
         tornado.ioloop.IOLoop.instance().start()
     except:
         import traceback
-        print(traceback.print_exc())
+        error(traceback.print_exc())
     finally:
         sys.exit(0)
