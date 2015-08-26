@@ -25,7 +25,7 @@ def __ReadConfigFile__():
 # run config
 setting = {
     "debug":True,
-    "default_handler_class": controller.error.Error403,
+    "default_handler_class": "controller.error.Error403",
     "static_path": "static",
 }
 __ReadConfigFile__()
