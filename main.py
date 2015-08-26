@@ -2,7 +2,15 @@
 import tornado.ioloop, tornado.web, tornado.options
 import sys, os, yaml
 import controller.base
-from util import logger
+import logging
+from logging import *
+
+# Log config. Try to use ./exp.py -log=DEBUG
+loglevel='INFO'
+numeric_level = getattr(logging, loglevel.upper(), None)
+if not isinstance(numeric_level, int):
+    raise ValueError('Invalid log level: %s' % loglevel)
+logging.basicConfig(level=numeric_level, format='[%(asctime)s][%(levelname)s] %(message)s')
 
 def __ReadConfigFile__():
     config_filename="config.yaml"
