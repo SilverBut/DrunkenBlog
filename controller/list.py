@@ -4,12 +4,13 @@ from controller.base import BaseHandler
 from util.filemanager import getdocumentdetail
 from util.filemanager import getdocumentlist
 from util.mdparser import article
+import tornado.web
 
 class PageHandler(BaseHandler):
     def get(self, *args, **kwargs):
         pagenum=int(args[0])
-        if pagenum<1:
-            self.custom_error()
+        if pagenum<1 or pagenum==10:
+            raise tornado.web.HTTPError(403)
         rootdir=self.opts.document_location
         lst=getdocumentlist(rootdir)
         # calc out the size

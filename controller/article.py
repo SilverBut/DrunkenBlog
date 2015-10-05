@@ -3,6 +3,7 @@ __author__='silver'
 from controller.base import BaseHandler
 from util.filemanager import getdocumentdetail
 from util.mdparser import article
+import tornado.web
 
 class ArticleHandler(BaseHandler):
     def get(self, *args, **kwargs):
@@ -11,7 +12,7 @@ class ArticleHandler(BaseHandler):
         try:
             fileinfo=getdocumentdetail(rootdir+'/'+filename+'.md')
         except FileNotFoundError:
-            self.custom_error(status_code=404)
+            raise tornado.web.HTTPError(404)
         blog=article(fileinfo['path'])
         blog.render()
         self.render("article.htm", title=blog.info['title'], md_html=blog.html, articleInfo=blog.info)

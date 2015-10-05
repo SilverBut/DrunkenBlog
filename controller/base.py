@@ -1,6 +1,6 @@
 #coding=utf-8
 __author__='silver'
-import tornado.web, json, yaml, os, time, re
+import tornado.web, json, yaml, time, re
 import tornado.options
 from tornado import gen
 
@@ -8,24 +8,20 @@ class BaseHandler(tornado.web.RequestHandler):
     def __init__(self, *args, **kwargs):
         self.opts=tornado.options.options
         super(BaseHandler, self).__init__(*args, **kwargs)
-
-    def redirect(self, url, permanent=False, status=None):
-        super(BaseHandler, self).redirect(url, permanent, status)
-        raise tornado.web.Finish()
-
-    def custom_error(self, status_code=500 ,**kwargs):
-        if not self._finished:
-            status_code = kwargs.get("status_code", 500)
-            self.set_status(status_code)
-            error_title = kwargs.get("title", "Error")
-            error_status = kwargs.get("info", "Error raised by ASP.net:")
-            self.write("Title: "+error_title+'<br>')
-            self.write("Status:"+error_status+str(status_code))
-        raise tornado.web.Finish()
+    def write_error(self, status_code, **kwargs):
+        print(kwargs)
+        self.set_status(status_code)
+        self.render("err.html", code=status_code, \
+                                text=kwargs.get("info", "Error raised by ASP.net on Linux"),\
+                                domain=self.opts.domain,\
+                                port=self.opts.port,\
+                                path=self.request.uri
+                                )
 
 class NotFoundHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        self.custom_error(info="File Not Found", status_code = 404)
+        raise tornado.web.HTTPError(504)
 
     def post(self, *args, **kwargs):
         self.get(*args, **kwargs)
+
