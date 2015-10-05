@@ -41,6 +41,7 @@ class article:
         self.info={}
         self.info['filepath']=filepath
         self.info['encoding']=encoding
+        self.info['title']=re.search(r"[\/\\](.*?)\.md$",filepath).group(1)
         self.hasmeta=hasmeta
         self.extracted=extracted
         self.removemeta=removemeta
