@@ -64,13 +64,13 @@ class article:
         #check
         if not self.extracted:
             self.extracted=True
-            if self.hasmeta:            
+            if self.hasmeta:
                 groups=re.match(self._mdparser_metainfo_regexp, self.text)
                 if (groups!=None):
                 #extract
                     info=eval(groups.group(1))
                     self.info.update(info)
-            # time-show strategy: 
+            # time-show strategy:
             # show the EARLIER time between last_update and t_modify if available
             # use GMT-0 when compares, and DO NOT forget to convert the last_update
         time_to_show=self.info['t_modify']
