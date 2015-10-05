@@ -13,7 +13,7 @@ class BaseHandler(tornado.web.RequestHandler):
         super(BaseHandler, self).redirect(url, permanent, status)
         raise tornado.web.Finish()
 
-    def custom_error(self, **kwargs):
+    def custom_error(self, status_code=500 ,**kwargs):
         if not self._finished:
             status_code = kwargs.get("status_code", 500)
             self.set_status(status_code)
