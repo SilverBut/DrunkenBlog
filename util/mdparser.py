@@ -3,6 +3,10 @@ __author__='silver'
 import markdown
 import re
 from ast import literal_eval as eval
+import time
+from datetime import datetime as dt
+from dateutil import tz
+from util.filemanager import getdocumentdetail
 
 """
 Class: util.mdparser.article
@@ -39,6 +43,7 @@ class article:
                  extensionlist=['markdown.extensions.toc','markdown.extensions.fenced_code','markdown.extensions.admonition','markdown.extensions.footnotes']):
         self.extensionlist=extensionlist    
         self.info={}
+        self.info.update(getdocumentdetail(filepath))
         self.info['filepath']=filepath
         self.info['encoding']=encoding
         self.info['title']=re.search(r"[\/\\](.*?)\.md$",filepath).group(1)
@@ -57,16 +62,30 @@ class article:
 
     def extract(self):
         #check
-        if self.extracted:
-            return None
-        self.extracted=True
-        if self.hasmeta:            
-            groups=re.match(self._mdparser_metainfo_regexp, self.text)
-            if (groups==None):
-                return None
-            #extract
-            info=eval(groups.group(1))
-            self.info.update(info)
+        if not self.extracted:
+            self.extracted=True
+            if self.hasmeta:            
+                groups=re.match(self._mdparser_metainfo_regexp, self.text)
+                if (groups!=None):
+                #extract
+                    info=eval(groups.group(1))
+                    self.info.update(info)
+            # time-show strategy: 
+            # show the EARLIER time between last_update and t_modify if available
+            # use GMT-0 when compares, and DO NOT forget to convert the last_update
+        time_to_show=self.info['t_modify']
+        if 'last_update' in self.info:
+            ftime=time.mktime(time.strptime("+0800 - "+self.info['last_update'],  \
+                                         r"%z - %Y/%m/%d %H:%M"))
+            if ftime<self.info['t_modify']:
+                time_to_show=ftime
+        #time zone convert
+        self.info['time_to_show']=time.strftime(r"%Y/%m/%d %H:%M",\
+                                                    dt.utcfromtimestamp(time_to_show).\
+                                                        replace(tzinfo=tz.gettz('UTC')).astimezone(tz=tz.gettz('Asia/Shanghai')).\
+                                                    timetuple()
+                                                )
+        return self.info
         
 
     def render(self):
