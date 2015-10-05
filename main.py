@@ -45,9 +45,9 @@ setting = {
 # Route config
 application = tornado.web.Application([
  #   (r"^/$", "controller.page.IndexPage"),
- #   (r"^/article\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.article.ArticleHandler"),
-    (r"^/list\.aspx/*$", "controller.list.FirstPageHandler"),
-    (r"^/list\.aspx/(\d+)$", "controller.list.PageHandler"),
+    (r"^/article\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.article.ArticleHandler"),
+ #   (r"^/list\.aspx/*$", "controller.list.FirstPageHandler"),
+ #   (r"^/list\.aspx/(\d+)$", "controller.list.PageHandler"),
  #   (r"^/page\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.page.SpecialPageHandler")
     (r"^/abc/.*$", "controller.testdemo.TestHandler")
 ], **setting)
