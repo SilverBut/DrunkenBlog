@@ -9,7 +9,7 @@ import tornado.web
 class PageHandler(BaseHandler):
     def get(self, *args, **kwargs):
         pagenum=int(args[0])
-        if pagenum<1 or pagenum==10:
+        if pagenum<1:
             raise tornado.web.HTTPError(403)
         rootdir=self.opts.document_location
         lst=getdocumentlist(rootdir)

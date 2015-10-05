@@ -9,10 +9,9 @@ class BaseHandler(tornado.web.RequestHandler):
         self.opts=tornado.options.options
         super(BaseHandler, self).__init__(*args, **kwargs)
     def write_error(self, status_code, **kwargs):
-        print(kwargs)
         self.set_status(status_code)
         self.render("err.html", code=status_code, \
-                                text=kwargs.get("info", "Error raised by ASP.net on Linux"),\
+                                text=str((kwargs['exc_info'][1])),\
                                 domain=self.opts.domain,\
                                 port=self.opts.port,\
                                 path=self.request.uri
