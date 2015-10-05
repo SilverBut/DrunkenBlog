@@ -12,40 +12,43 @@ if not isinstance(numeric_level, int):
     raise ValueError('Invalid log level: %s' % loglevel)
 logging.basicConfig(level=numeric_level, format='[%(asctime)s][%(levelname)s] %(message)s')
 
-def __ReadConfigFile__():
-    config_filename="config.yaml"
-    conf={}
-    try:
-        with open(config_filename,'r') as fin:
-            conf = yaml.load(fin)
-    except:
-        warning("Has no or invaild config file. Use default value")
-    conf   
-
-# run config
-setting = {
-    "debug":True,
-    "default_handler_class": "controller.error.Error403",
-    "static_path": "static",
-}
-__ReadConfigFile__()
-
-#sys config
+#Load System Config from command line and config file
 tornado.options.define("port", default=80, help="listening port", type=int)
 tornado.options.define("addr", default="127.0.0.1", help="listening address")
+tornado.options.define("debug", default=False, help="Whether the server is "\
+                        "under the debug mode. CATUION IN PRODUCTION SERVER!"
+                        , type=bool)
+tornado.options.define("compress_response", default=False, help="Open it if "\
+                        "you want to compress the response.", type=bool)
+tornado.options.define("config_file", default="config.ini", help="Define "\
+                        "the config file.")
 tornado.options.parse_command_line()
+try:
+    a=open(tornado.options.options.config_file)
+    a.close()
+    tornado.options.parse_config_file(tornado.options.options.config_file)
+except:
+    warning("Unable to use config file. Use default settings.")
 
+#Load settings to var
+setting = {
+    "debug":tornado.options.options.debug,
+    "default_handler_class": controller.base.NotFoundHandler,
+    "static_path": "static",
+    "compress_response": tornado.options.options.compress_response
+}
+
+# Route config
 application = tornado.web.Application([
     (r"^/$", "controller.page.IndexPage"),
-    (r"^/article.aspx/([\w-!():.,\[\]]+)$", "controller.article.ArticleHandler"),
-    (r"^/list.aspx/*$", "controller.list.FirstPageHandler"),
-    (r"^/list.aspx/(\d+)$", "controller.list.PageHandler"),
-    (r"^/page.aspx/([\w-!():.,\[\]]+)$", "controller.page.SpecialPageHandler")
+    (r"^/article\.aspx/([\w-!():.,\[\]]+)$", "controller.article.ArticleHandler"),
+    (r"^/list\.aspx/*$", "controller.list.FirstPageHandler"),
+    (r"^/list\.aspx/(\d+)$", "controller.list.PageHandler"),
+    (r"^/page\.aspx/([\w-!():.,\[\]]+)$", "controller.page.SpecialPageHandler")
+ #   (r"^/abc/.*$", "controller.testdemo.TestHandler")
 ], **setting)
 
-
-
-
+# Server loop
 if __name__ == "__main__":
     try:
         application.listen(80)

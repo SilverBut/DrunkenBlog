@@ -25,3 +25,6 @@ Based on Markdown files to format the article, and use simple file storage techs
 	 |--controller                   # will be used to handle requests
 	 |--extends                      # plugins and extend modules
 	 |--util                         # function modules such as renderer
+
+## How to load config
+CMDLine > Config File > Default Settings
