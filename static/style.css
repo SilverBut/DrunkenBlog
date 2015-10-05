@@ -1,0 +1,283 @@
+/*
+Developer: Silver Bullet. <adumail2+styler$at$gmail.com>
+
+Thanks to: AmazeUI;
+
+All rights reserved.
+
+Any commerical use must have license from the developer.
+Other use is welcomed.
+
+*/
+
+/*INITALIZE*
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}*/
+
+html{
+  font-size:1rem;
+}
+
+
+/*Global styles*/
+body {
+  font-family: "Segoe UI","Lucida Grande","Lucida Bright", Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+a {
+  color: #336;
+  text-decoration: none;
+  border-bottom: 1px dashed;
+}
+
+a:hover,a:active {
+  color: #339;
+  background-color: #eef;
+  border-bottom: 1px solid;
+}
+
+hr{
+  border-width: 1.5px;
+}
+
+table,
+tr,
+td {
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: collapse;
+  margin: 0 auto 0 auto;
+}
+/*Global Styles End */
+
+/*Container Styles*/
+.container{
+   width: 850px;
+   margin:0 auto;
+   padding-bottom:10%;
+}
+
+.container pre{
+  font-family: Inconsolata,Consola,Monaco,sans-serif;
+  margin-left: 20px;
+  margin-bottom: 35px;
+  line-height: 24px;
+  border: 1px solid rgb(204,204,204);
+  border-radius: 5px;
+  overflow: auto;
+  display: block;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+/*Container Styles End*/
+
+/*Title Styles*/
+.header{
+  padding: 30px 0;
+  background-color:;
+}
+
+.header .title{
+  color: #555;
+  text-align: center;
+  letter-spacing: 0.3em;
+  font-family: "Lucida Grande", "Times New Roman", sans-serif;
+  font-weight:400;
+  text-shadow: 4px 6px 10px #999;
+}
+
+.header .description{
+  text-align:right;
+  font-weight: 400;
+  font-style: italic;;
+  font-size: 0.8em;
+}
+/*Title Styles End*/
+
+/*Navibar Styles*/
+.navibar{
+  /*margin: 20px 0;*/
+}
+
+.navibar .navimenu{
+  list-style-type: none;
+  text-align:center;
+  width: auto;
+  padding-left: 0;
+}
+
+.navimenu li{
+  font-size:0.97rem;
+  font-family: "Courier New", "Times New Roman", serif;
+  position: relative;
+  display: inline;
+  padding: 7px 15px;
+}
+
+.navimenu li:hover, .navimenu li:active{
+  background:#eef;
+}
+
+.navimenu a{
+  border-width: 0;
+  color:#444;
+  font-weight: 100;
+}
+
+.navimenu a:hover, .navimenu a.active
+{
+  background:#eee;
+}
+/*Navibar Styles End*/
+/*Article List Styles*/
+.article_index_list *{
+  font-size:1rem;
+}
+
+.article_list{
+
+}
+
+.article_list li{
+  list-style-type: none;
+}
+
+.article_list .article_list_item{
+  margin-top:10px;
+  color:#888;
+}
+
+.article_list .article_list_item a{ 
+  font-size:1.05rem;
+  color:#888;
+  border-style:none !important;
+}
+
+.article_list .article_list_item .article_list_time{
+
+}
+
+.article_list .article_list_item .article_list_name{
+  color:#000;
+}
+
+.article_list .article_list_item .article_list_summary{
+  margin-top:0.5rem;
+  margin-left:2rem;
+  padding:0.6rem 1.05rem 1.6rem;
+  border-left-width:0.2rem;
+  border-left-style:solid;
+  border-left-color:#ddd;
+}
+
+.article_list .article_list_item img{
+  float:left;
+  width:200px;
+  height:200px;
+  overflow: hidden;
+}
+/*Article List Styles End*/
+
+/*Article Archive Styles Start*/
+.article_archive_list{
+  margin:2rem 0;
+}
+.article_archive_list *{
+  font-size:0.95rem;
+}
+
+.list_pager *{
+  text-align:center;
+  border-style:none;
+  color:#000;
+}
+/*Article Archive Styles End*/
+
+/*Taglist Styles*/
+.tag_content_list{
+  margin:3rem 0;
+}
+
+.tag_content_list .tag_list{
+  list-style-type: none;
+  width: auto;
+  padding-left: 0;
+}
+
+.tag_list li{
+  font-family: "Courier New", "Times New Roman", serif;
+  position: relative;
+  display: inline;
+  padding: 5px 12px;
+}
+
+.tag_list_item{
+  margin:0px 0.5rem;
+  border-radius:0.7rem;
+  background-color:#ddd;
+}
+
+.tag_list_item a{
+  color: #000;
+  border:none;
+}
+
+.tag_list_item a:hover{
+  background-color:inherit;
+}
+/*Taglist Styles End*/
+
+/*Footer Styles*/
+.bottom{
+  text-align: center;
+  color:#666;
+  background-color:#eee;
+  font-size:0.95rem;
+  font-variant: small-caps;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  clear:both;
+  position:relative;
+  bottom:-50px;
+}
+
+.bottom .contact_email{
+  font-variant: normal;
+}
+
+/*Footer Styles End*/
+/*Following of this file is styles of article contents*/
+
+/*admonition*/
+.admonition,.warning{
+  border-width:1px;
+  border-color:red;
+  border-style:solid;
+  text-align:center;
+}
+
+.admonition-title{
+  font-weight: bolder;
+  font-size:+1.5rem;
+}
+
+/*table of contents*/
+.toc{
+  float:left;
+  max-width:15rem;
+  margin:0 10px;
+  word-break:break-all;
+}
+
+/*content overflow*/
+.content{
+  word-break:break-all;
+}
