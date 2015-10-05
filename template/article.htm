@@ -1,0 +1,9 @@
+{% extends "base.htm" %}
+
+{% block pagetitle %}{{ title }}{% end %}
+
+{% block contents %}
+<h1 id=articletitle>{% if 'last_update' in articleInfo %}{% raw articleInfo['title'] %}{% end %}</h1>
+{% if 'last_update' in articleInfo %}<span id=articleLastUpdate>Last updated:{{ articleInfo['last_update'] }}</span>{% end %}
+{% raw md_html %}
+{% end %}
