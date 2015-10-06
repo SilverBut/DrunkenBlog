@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import tornado.ioloop, tornado.web, tornado.options
-import sys, os, yaml
+import sys, os
 import controller.base
 import logging
 from logging import *
@@ -44,7 +44,7 @@ application = tornado.web.Application([
     (r"^/list\.aspx/*$", "controller.list.FirstPageHandler"),
     (r"^/list\.aspx/(\d+)$", "controller.list.PageHandler"),
  #   (r"^/page\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.page.SpecialPageHandler")
-    (r"^/abc/.*$", "controller.testdemo.TestHandler")
+ #   (r"^/abc/.*$", "controller.testdemo.TestHandler")
 ], **setting)
 
 # Server loop
