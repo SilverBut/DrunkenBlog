@@ -1,6 +1,6 @@
 #coding=utf-8
 __author__='silver'
-import tornado.web, json, yaml, time, re
+import tornado.web, json, time, re
 import tornado.options
 from tornado import gen
 
