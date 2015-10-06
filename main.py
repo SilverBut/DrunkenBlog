@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import tornado.ioloop, tornado.web, tornado.options
-import sys, os, yaml
+import sys, os
 import controller.base
 import logging
 from logging import *
