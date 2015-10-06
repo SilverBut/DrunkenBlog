@@ -6,6 +6,7 @@ from ast import literal_eval as eval
 import time
 from datetime import datetime as dt
 from dateutil import tz
+from os.path import splitext, split
 from util.filemanager import getdocumentdetail
 
 """
@@ -46,7 +47,7 @@ class article:
         self.info.update(getdocumentdetail(filepath))
         self.info['filepath']=filepath
         self.info['encoding']=encoding
-        self.info['title']=re.search(r"[\/\\](.*?)\.md$",filepath).group(1)
+        self.info['title']=splitext(split(filepath)[1])[0]
         self.hasmeta=hasmeta
         self.extracted=extracted
         self.removemeta=removemeta

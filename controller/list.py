@@ -12,7 +12,12 @@ class PageHandler(BaseHandler):
         if pagenum<1:
             raise tornado.web.HTTPError(403)
         rootdir=self.opts.document_location
-        lst=getdocumentlist(rootdir)
+        try:
+            lst=getdocumentlist(rootdir, recursive=False)
+            if len(lst)==0:
+                raise FileNotFoundError
+        except FileNotFoundError:
+            raise tornado.web.HTTPError(404, reason='No articles.')
         # calc out the size
         pagecount=10
         totalcount=len(lst)

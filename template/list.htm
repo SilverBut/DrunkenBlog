@@ -2,12 +2,12 @@
 
 {% block pagetitle %}Article List{% end %}
 {% block contents %}
-				<h1>History is boring</h1>
-				<div class="article_archive_list">
+				<h1>{% try %}{{ pagetitle }}{% except %}History is boring{% end %}</h1>
+				<div class="article_list">
 					<ul class="article_list">
 {% for item in articleInfo %}
 						<li class="article_list_item">
-							<a href="/article.aspx/{{ item['filename'] }}">
+							<a href="/{% try %}{{ disphandler }}{% except %}article.aspx{% end %}/{{ item['filename'] }}">
 							<span class="article_list_time">
 							{% if 'time_to_show' in item %}
 							{{ item['time_to_show'] }}
