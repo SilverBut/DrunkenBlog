@@ -187,10 +187,10 @@ td {
 /*Article List Styles End*/
 
 /*Article Archive Styles Start*/
-.article_archive_list{
+.article_list{
   margin:2rem 0;
 }
-.article_archive_list *{
+.article_list *{
   font-size:0.95rem;
 }
 
