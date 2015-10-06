@@ -28,7 +28,7 @@ except:
 #Load settings to var
 setting = {
     "debug":tornado.options.options.debug,
-    "compress_response": tornado.options.options.compress_response
+    "compress_response": tornado.options.options.compress_response,
     "default_handler_class": controller.base.NotFoundHandler,
     "static_handler_class": controller.base.StaticBaseHandler,
     "template_path": "template",
