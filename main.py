@@ -2,8 +2,6 @@
 import tornado.ioloop, tornado.web, tornado.options
 import sys, os
 import controller.base
-import logging
-from logging import *
 
 #Load System Config from command line and config file
 tornado.options.define("port", default=80, help="listening port", type=int)
@@ -30,11 +28,11 @@ except:
 #Load settings to var
 setting = {
     "debug":tornado.options.options.debug,
+    "compress_response": tornado.options.options.compress_response,
     "default_handler_class": controller.base.NotFoundHandler,
     "static_handler_class": controller.base.StaticBaseHandler,
     "template_path": "template",
     "static_path": "static",
-    "compress_response": tornado.options.options.compress_response
 }
 
 # Route config
@@ -50,7 +48,10 @@ application = tornado.web.Application([
 # Server loop
 if __name__ == "__main__":
     try:
-        application.listen(80)
+        application.listen(
+                        port=tornado.options.options.port,\
+                        address=tornado.options.options.addr
+                            )
         tornado.ioloop.IOLoop.instance().start()
     except:
         import traceback

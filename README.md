@@ -17,8 +17,8 @@ Based on Markdown files to format the article, and use simple file storage techs
 ## Directory List
 	\-                            # root folder
 	 |--main.py                      # main script
-	 |--config.yaml.sample           # Example config file
-	 |--config.yaml                  # config file
+	 |--config.ini.sample           # Example config file
+	 |--config.ini                  # config file
 	 |--template                     # template folder
 	 |--static                       # static file folder, such as .css or err htmls
 	 |--documents                    # where *.md exists
