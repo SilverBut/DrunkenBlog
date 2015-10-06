@@ -1,6 +1,7 @@
 # Site config file
 *config.json
 *config.yaml
+*config.ini
 
 # Documents
 documents/
