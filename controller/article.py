@@ -12,7 +12,7 @@ class ArticleHandler(BaseHandler):
         try:
             fileinfo=getdocumentdetail(rootdir+'/'+filename+'.md')
         except FileNotFoundError:
-            raise tornado.web.HTTPError(404)
+            raise tornado.web.HTTPError(404, reason='Non-existing article.')
         blog=article(fileinfo['path'])
         blog.render()
         self.render("article.htm", title=blog.info['title'], md_html=blog.html, articleInfo=blog.info)
