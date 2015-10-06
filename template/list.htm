@@ -1,0 +1,42 @@
+{% extends "base.htm" %}
+
+{% block pagetitle %}Article List{% end %}
+{% block contents %}
+				<h1>History is boring</h1>
+				<div class="article_archive_list">
+					<ul class="article_list">
+{% for item in articleInfo %}
+						<li class="article_list_item">
+							<a href="/article.aspx/{{ item['filename'] }}">
+							<span class="article_list_time">
+							{% if 'time_to_show' in item %}
+							{{ item['time_to_show'] }}
+							{% else %}
+							Unknown Space
+							{% end %}
+							</span> - <span class="article_list_name">{{ item['title'] }}
+						</span></a></li>
+{% end %}               
+					</ul>
+				</div>
+				<div class="list_pager">
+					<p class="list_pager">
+					<span class="list_pager">
+					{% if pagenum!=1 %}
+						{% if pagenum > 1 %}
+					<a href="/list.aspx/1">|&lt;</a>&nbsp;
+						{% end %}					
+					<a href="/list.aspx/{% raw pagenum - 1 %}">&lt;&lt;</a>&nbsp;
+					{% end %}
+					
+					Page {{ pagenum }} / {{ max_page }}&nbsp;
+
+					{% if pagenum != max_page %}
+						{% if pagenum < max_page %}
+					<a href="/list.aspx/{% raw pagenum + 1 %}">&gt;&gt;</a>&nbsp;
+						{% end %}
+					<a href="/list.aspx/{{ max_page }}">&gt;|</a>
+					{% end %}
+				</span></p>
+				</div>
+{% end %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block pagetitle %}None{% end %}</title>
+		<meta charset="utf-8">
+
+		<!--some seo optims-->
+    	<meta name="author" content="Synthesis">
+    	<meta name="description" content="Investigate more, whatever it is." />
+    	<meta name="keywords" content="C, asm, C++, ACM, reverse engineering" />
+
+    	<!--Display options-->
+    	<meta http-equiv="Cache-Control" content="no-siteapp" />
+    	<meta name="renderer" content="webkit">
+
+    	<!---styles and scripts-->
+    	<link rel="Stylesheet" type="text/css" href="{{ static_url("style.css") }}">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1 class="title">Silver</h1>
+	      		<h2 class="description">一个高尚的人，一个纯粹的人，一个有道德的人，<br>一个脱离了低级趣味的人，一个有益于人民的人。<!--A boy who wants to investigate more...--></h2>
+	      		<div class="navibar">
+		        	<ul class="navimenu">
+						<li><a href="/">Homepage</a></li>
+						<li><a href="/list.aspx">Archives</a></li>
+						<!--<li><a href="/merge_tag.aspx">Tags</a></li>-->
+						<li><a href="/static/aboutme.htm">About Me</a></li>
+						<li><a href="/static/friendlink.htm">Links</a></li>
+		        	</ul>
+		        </div>
+		    </div>
+			<div class="content">
+				{% block contents %}
+				None
+				{% end %}
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="copyright">
+				<p class="copyright_text">
+					Any commerical uses of this blog must contact the administrator first.<br> Other uses should just give clear indication of the source and this license.
+				</p>
+			</div>
+			<div class="contact">
+				<p class="contact_text">
+					Contact webmaster at: <br>
+					<span class="contact_email">&lt;webmaster{conv to at}sonyis.science&gt;
+					</span>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
+
