@@ -5,13 +5,6 @@ import controller.base
 import logging
 from logging import *
 
-# Log config. Try to use ./exp.py -log=DEBUG
-# loglevel='INFO'
-# numeric_level = getattr(logging, loglevel.upper(), None)
-# if not isinstance(numeric_level, int):
-#     raise ValueError('Invalid log level: %s' % loglevel)
-# logging.basicConfig(level=numeric_level, format='[%(asctime)s][%(levelname)s] %(message)s')
-
 #Load System Config from command line and config file
 tornado.options.define("port", default=80, help="listening port", type=int)
 tornado.options.define("addr", default="127.0.0.1", help="listening address")
@@ -25,6 +18,7 @@ tornado.options.define("config_file", default="config.ini", help="Define "\
 tornado.options.define("document_location", default="documents", help="Redefine"\
                         " the location of your documents. DO NOT ADD SLASHES AFTER"\
                         " YOUR LOCATION!")
+tornado.options.define("domain", default="localhost", help="URL displayed")
 tornado.options.parse_command_line()
 try:
     a=open(tornado.options.options.config_file)
@@ -37,6 +31,7 @@ except:
 setting = {
     "debug":tornado.options.options.debug,
     "default_handler_class": controller.base.NotFoundHandler,
+    "static_handler_class": controller.base.StaticBaseHandler,
     "template_path": "template",
     "static_path": "static",
     "compress_response": tornado.options.options.compress_response
@@ -44,8 +39,8 @@ setting = {
 
 # Route config
 application = tornado.web.Application([
- #   (r"^/$", "controller.page.IndexPage"),
- #   (r"^/article\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.article.ArticleHandler"),
+    (r"^/$", "controller.page.IndexPage"),
+    (r"^/article\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.article.ArticleHandler"),
     (r"^/list\.aspx/*$", "controller.list.FirstPageHandler"),
     (r"^/list\.aspx/(\d+)$", "controller.list.PageHandler"),
  #   (r"^/page\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.page.SpecialPageHandler")
