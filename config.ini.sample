@@ -5,10 +5,9 @@
 # Development Value: True
 # Usage:
 #   Turn on this flag to make the tornado.web able to run under debug mode.
-debug=True
+#debug=False
 
 # Field name:port
-
 # Type:int
 # Default Value:80
 # Usage:
@@ -16,7 +15,6 @@ debug=True
 #port=80
 
 # Field name:addr
-
 # Type: string
 # Default Value:"127.0.0.1"
 # Usage
@@ -24,30 +22,25 @@ debug=True
 #addr="127.0.0.1"
 
 # Field name:compress_response
-
 # Type:bool
 # Default Value:False
 # Usage:
 #   Open it if you want to compress the response.
-
 #compress_response=False
 
 # Field name:config_file
-
 # Default Value:"config.ini"
 # Usage:
 #   Define the name and/or location of the config file.
 #config_file="config.ini"
 
 # Field name:document_location
-
 # Default Value:"documents"
 # Usage:
 #   Redefine the location of your documents. DO NOT ADD SLASHES AFTER YOUR LOCATION!
-#documents="documents"
+#document_location="documents"
 
 # Field name:domain
-
 # Default Value:"localhost"
 # Usage:
 #   The URL displayed on your website.

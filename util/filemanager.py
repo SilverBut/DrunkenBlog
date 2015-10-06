@@ -22,6 +22,7 @@ Return Value: [{path, filename, [t_create, t_modify]},..]
 """
 
 def getdocumentlist(path, recursive=True, detail=True):
+    path=os.path.normpath(path)
     path=os.path.relpath(path)  #convert to rel path
     document_list=[]
     # have the list
