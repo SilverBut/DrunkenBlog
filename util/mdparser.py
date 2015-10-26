@@ -41,7 +41,7 @@ class article:
                  removemeta=False,
                  removehead=True,
                  encoding='utf-8', 
-                 extensionlist=['markdown.extensions.toc','markdown.extensions.fenced_code','markdown.extensions.admonition','markdown.extensions.footnotes']):
+                 extensionlist=['markdown.extensions.toc','markdown.extensions.fenced_code','markdown.extensions.admonition','markdown.extensions.footnotes', 'markdown.extensions.tables']):
         self.extensionlist=extensionlist    
         self.info={}
         self.info.update(getdocumentdetail(filepath))
