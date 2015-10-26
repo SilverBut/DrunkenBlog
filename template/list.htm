@@ -9,8 +9,8 @@
 						<li class="article_list_item">
 							<a href="/{% try %}{{ disphandler }}{% except %}article.aspx{% end %}/{{ item['filename'] }}">
 							<span class="article_list_time">
-							{% if 'time_to_show' in item %}
-							{{ item['time_to_show'] }}
+							{% if 'last_update' in item %}
+							{{ item['last_update'] }}
 							{% else %}
 							Unknown Space
 							{% end %}

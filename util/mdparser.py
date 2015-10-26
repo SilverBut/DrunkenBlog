@@ -3,9 +3,9 @@ __author__='silver'
 import markdown
 import re
 from ast import literal_eval as eval
-import time
-from datetime import datetime as dt
-from dateutil import tz
+# import time
+# from datetime import datetime as dt
+# from dateutil import tz
 from os.path import splitext, split
 from util.filemanager import getdocumentdetail
 

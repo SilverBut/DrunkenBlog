@@ -9,6 +9,8 @@ from os import stat_result
 from os import walk
 from os import stat_float_times
 #from re import re
+from datetime import datetime 
+from dateutil import tz
 
 """
 
@@ -54,7 +56,9 @@ def getdocumentlist(path, recursive=True, detail=True):
 def getdocumentdetail(path):
     # os.stat_float_times(False) should be executed before all calls
     m=stat(path)
-    return {"path":path, "t_create":m.st_ctime, "t_modify":m.st_mtime}
+    strt=datetime.fromtimestamp(m.st_mtime, tz=tz.gettz('Asia/Shanghai')).strftime(r"%Y/%m/%d %H:%M")
+    print(strt)
+    return {"path":path, "t_create":m.st_ctime, "t_modify":m.st_mtime, 'last_update':strt}
     # os.stat_float_times(True)  should be executed after all calls
 
 if __name__=="__main__":
