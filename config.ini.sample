@@ -45,3 +45,15 @@
 # Usage:
 #   The URL displayed on your website.
 #domain="localhost"
+
+# Field name:comment
+# Default Value:False
+# Usage:
+#   Whether you want to turn comment on. Use disqus as default.
+#comment=False
+
+# Field name:comment_js
+# Default Value:"none"
+# Usage:
+#   Place "s.src" in disqus comment script
+#comment_js="//xxxx.disqus.com/embed.js"
