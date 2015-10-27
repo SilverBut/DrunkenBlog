@@ -15,7 +15,7 @@ class ArticleHandler(BaseHandler):
             raise tornado.web.HTTPError(404, reason='Non-existing article.')
         blog=article(fileinfo['path'])
         blog.render()
-        self.render("article.htm", title=blog.info['title'], md_html=blog.html, articleInfo=blog.info)
+        self.render("article.htm", title=blog.info['title'], md_html=blog.html, articleInfo=blog.info, comment=True)
 
     def post(self):
         self.get()

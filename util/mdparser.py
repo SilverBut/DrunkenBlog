@@ -3,9 +3,9 @@ __author__='silver'
 import markdown
 import re
 from ast import literal_eval as eval
-import time
-from datetime import datetime as dt
-from dateutil import tz
+# import time
+# from datetime import datetime as dt
+# from dateutil import tz
 from os.path import splitext, split
 from util.filemanager import getdocumentdetail
 
@@ -41,7 +41,7 @@ class article:
                  removemeta=False,
                  removehead=True,
                  encoding='utf-8', 
-                 extensionlist=['markdown.extensions.toc','markdown.extensions.fenced_code','markdown.extensions.admonition','markdown.extensions.footnotes']):
+                 extensionlist=['markdown.extensions.toc','markdown.extensions.fenced_code','markdown.extensions.admonition','markdown.extensions.footnotes', 'markdown.extensions.tables']):
         self.extensionlist=extensionlist    
         self.info={}
         self.info.update(getdocumentdetail(filepath))
@@ -68,24 +68,24 @@ class article:
             if self.hasmeta:
                 groups=re.match(self._mdparser_metainfo_regexp, self.text)
                 if (groups!=None):
-                #extract
+                #Extract infos out
                     info=eval(groups.group(1))
                     self.info.update(info)
-            # time-show strategy:
-            # show the EARLIER time between last_update and t_modify if available
-            # use GMT-0 when compares, and DO NOT forget to convert the last_update
-        time_to_show=self.info['t_modify']
-        if 'last_update' in self.info:
-            ftime=time.mktime(time.strptime("+0800 - "+self.info['last_update'],  \
-                                         r"%z - %Y/%m/%d %H:%M"))
-            if ftime<self.info['t_modify']:
-                time_to_show=ftime
-        #time zone convert
-        self.info['time_to_show']=time.strftime(r"%Y/%m/%d %H:%M",\
-                                                    dt.utcfromtimestamp(time_to_show).\
-                                                        replace(tzinfo=tz.gettz('UTC')).astimezone(tz=tz.gettz('Asia/Shanghai')).\
-                                                    timetuple()
-                                                )
+        #     # time-show strategy:
+        #     # show the EARLIER time between last_update and t_modify if available
+        #     # use GMT-0 when compares, and DO NOT forget to convert the last_update
+        # time_to_show=self.info['t_modify']
+        # if 'last_update' in self.info:
+        #     ftime=time.mktime(time.strptime("+0800 - "+self.info['last_update'],  \
+        #                                  r"%z - %Y/%m/%d %H:%M"))
+        #     if ftime<self.info['t_modify']:
+        #         time_to_show=ftime
+        # #time zone convert
+        # self.info['time_to_show']=time.strftime(r"%Y/%m/%d %H:%M",\
+        #                                             dt.utcfromtimestamp(time_to_show).\
+        #                                                 replace(tzinfo=tz.gettz('UTC')).astimezone(tz=tz.gettz('Asia/Shanghai')).\
+        #                                             timetuple()
+        #                                         )
         return self.info
         
 

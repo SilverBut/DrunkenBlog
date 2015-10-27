@@ -21,7 +21,7 @@ class SpecialPageListHandler(BaseHandler):
         lst[:] = [d for d in lst if d.get('filename') != 'index']
 
         lst.sort(key=lambda i:i['title'])
-        self.render('list.htm', disphandler='page.aspx', pagetitle="Some lonely pages.", articleInfo=lst, pagenum=1, max_page=1)
+        self.render('list.htm', disphandler='page.aspx', pagetitle="Some lonely pages.", articleList=lst, pagenum=1, max_page=1)
 
     def post(self):
         self.get()
@@ -45,7 +45,7 @@ class SpecialPageHandler(BaseHandler):
 
 class IndexPage(SpecialPageHandler):
     def get(self, *args, **kwargs):
-        super(IndexPage, self).get(filename='index', flag=1)
+        super(IndexPage, self).get(filename='index', flag=1, comment=False)
 
     def post(self):
         self.get()

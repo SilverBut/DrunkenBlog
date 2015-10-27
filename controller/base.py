@@ -25,6 +25,26 @@ class BaseHandler(tornado.web.RequestHandler):
         super(BaseHandler, self).__init__(*args, **kwargs)
     def write_error(self, status_code, **kwargs):
         error_process(self, status_code, **kwargs)
+    def render(self, template_name, comment=False, *args, **kwargs):  \
+        # logic procedure: 
+        #   Global switch has most priority
+        #   Article option will be treated if defined
+        #   When it is undefined, partial switch will came to effort
+        #   that means:
+        #
+        #   Global  |           0           |      1(Default)       |
+        #   Section | 0(Default)|     1     |     0     |     1     |
+        #   Article | 0 | 1 | U | 0 | 1 | U | 0 | 1 | U | 0 | 1 | U |
+        #   Result  |           0           | 0 | 1 | 0 | 0 | 1 | 1 |       
+        comment=self.opts.comment and kwargs.get('articleInfo', {}).get('comment', comment)
+        if comment:     
+            commentinfo={'url':'','identifier':'','jsaddr':''}
+            commentinfo['url']="//"+self.opts.domain+self.request.uri
+            commentinfo['identifier']=self.request.uri
+            commentinfo['jsaddr'] = self.opts.comment_js
+            super(BaseHandler, self).render(template_name, commentinfo=commentinfo, *args, **kwargs)
+        else:
+            super(BaseHandler, self).render(template_name, *args, **kwargs)
 
 class NotFoundHandler(BaseHandler):
     def get(self, *args, **kwargs):

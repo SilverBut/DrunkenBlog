@@ -17,6 +17,8 @@ tornado.options.define("document_location", default="documents", help="Redefine"
                         " the location of your documents. DO NOT ADD SLASHES AFTER"\
                         " YOUR LOCATION!")
 tornado.options.define("domain", default="localhost", help="URL displayed")
+tornado.options.define("comment", default=False)
+tornado.options.define("comment_js", default="")
 tornado.options.parse_command_line()
 try:
     a=open(tornado.options.options.config_file)
@@ -46,7 +48,6 @@ application = tornado.web.Application([
 
     (r"^/page\.aspx/*$", "controller.page.SpecialPageListHandler"),
     (r"^/page\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.page.SpecialPageHandler")
- #   (r"^/abc/.*$", "controller.testdemo.TestHandler")
 ], **setting)
 
 # Server loop
