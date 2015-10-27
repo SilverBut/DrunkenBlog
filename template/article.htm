@@ -7,6 +7,7 @@
 {% if 'last_update' in articleInfo %}<span id=articleLastUpdate>Last updated:{{ articleInfo['last_update'] }}</span>{% end %}
 {% raw md_html %}
     {% try %}
+    {% if commentinfo %}
 <!--Comment Area-->
 <div id="disqus_thread"></div>
 <script>
@@ -23,6 +24,7 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 <!--Comment End-->
+        {% end %}
         {% except %}
     {% end %}
 {% end %}
