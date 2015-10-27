@@ -5,7 +5,7 @@
 				<h1>{% try %}{{ pagetitle }}{% except %}History is boring{% end %}</h1>
 				<div class="article_list">
 					<ul class="article_list">
-{% for item in articleInfo %}
+{% for item in articleList %}
 						<li class="article_list_item">
 							<a href="/{% try %}{{ disphandler }}{% except %}article.aspx{% end %}/{{ item['filename'] }}">
 							<span class="article_list_time">

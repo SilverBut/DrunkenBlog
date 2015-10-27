@@ -32,7 +32,7 @@ class PageHandler(BaseHandler):
         for i in range(len(lst)):
             lst[i].update(article(lst[i]['path']).extract())
 
-        self.render('list.htm', articleInfo=lst, pagenum=pagenum, max_page=max_page)
+        self.render('list.htm', articleList=lst, pagenum=pagenum, max_page=max_page)
 
     def post(self):
         self.get()
