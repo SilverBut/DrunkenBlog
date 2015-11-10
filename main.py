@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import tornado.ioloop, tornado.web, tornado.options
+import tornado.ioloop, tornado.web, tornado.options, tornado.httpserver
 import sys, os
 import controller.base
 
@@ -8,6 +8,12 @@ tornado.options.define("port", default=80, help="listening port", type=int)
 tornado.options.define("addr", default="127.0.0.1", help="listening address")
 tornado.options.define("debug", default=False, help="Whether the server is "\
                         "under the debug mode. CATUION IN PRODUCTION SERVER!"
+                        , type=bool)
+tornado.options.define("xheaders", default=False, help="If xheaders is True, "\
+                        "we support the X-Real-Ip/X-Forwarded-For and X-Scheme/X-"\
+                        "Forwarded-Proto headers, which override the remote IP and "\
+                        "URI scheme/protocol for all requests. These headers are "\
+                        "useful when running Tornado behind a reverse proxy or load balancer. "
                         , type=bool)
 tornado.options.define("compress_response", default=False, help="Open it if "\
                         "you want to compress the response.", type=bool)
@@ -53,7 +59,9 @@ application = tornado.web.Application([
 # Server loop
 if __name__ == "__main__":
     try:
-        application.listen(
+        http_server = tornado.httpserver.HTTPServer(application,
+                                 xheaders=tornado.options.options.xheaders)
+        http_server.listen(
                         port=tornado.options.options.port,\
                         address=tornado.options.options.addr
                             )
