@@ -6,7 +6,7 @@ from ast import literal_eval as eval
 # import time
 # from datetime import datetime as dt
 # from dateutil import tz
-from os.path import splitext, split
+from os.path import splitext, split, sep
 from util.filemanager import getdocumentdetail
 
 """
@@ -41,8 +41,8 @@ class article:
                  removemeta=False,
                  removehead=True,
                  encoding='utf-8', 
-                 extensionlist=['markdown.extensions.toc','markdown.extensions.fenced_code','markdown.extensions.admonition','markdown.extensions.footnotes', 'markdown.extensions.tables']):
-        self.extensionlist=extensionlist    
+                 extensionlist=['markdown.extensions.toc','markdown.extensions.admonition','markdown.extensions.footnotes','extends.gfm']):
+        self.extensionlist=extensionlist
         self.info={}
         self.info.update(getdocumentdetail(filepath))
         self.info['filepath']=filepath
