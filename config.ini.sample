@@ -7,6 +7,16 @@
 #   Turn on this flag to make the tornado.web able to run under debug mode.
 #debug=False
 
+# Field name: xheaders
+# Type: bool
+# Default Value: False
+# Usage:
+#    If xheaders is True, we support the X-Real-Ip/X-Forwarded-For and X-Scheme/X-
+#  Forwarded-Proto headers, which override the remote IP and URI scheme/protocol 
+#  for all requests. These headers are useful when running Tornado behind a reverse 
+#  proxy or load balancer. 
+#xheaders=False
+
 # Field name:port
 # Type:int
 # Default Value:80
@@ -45,3 +55,15 @@
 # Usage:
 #   The URL displayed on your website.
 #domain="localhost"
+
+# Field name:comment
+# Default Value:False
+# Usage:
+#   Whether you want to turn comment on. Use disqus as default.
+#comment=False
+
+# Field name:comment_js
+# Default Value:"none"
+# Usage:
+#   Place "s.src" in disqus comment script
+#comment_js="//xxxx.disqus.com/embed.js"

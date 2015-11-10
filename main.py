@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import tornado.ioloop, tornado.web, tornado.options
+import tornado.ioloop, tornado.web, tornado.options, tornado.httpserver
 import sys, os
 import controller.base
 
@@ -9,6 +9,12 @@ tornado.options.define("addr", default="127.0.0.1", help="listening address")
 tornado.options.define("debug", default=False, help="Whether the server is "\
                         "under the debug mode. CATUION IN PRODUCTION SERVER!"
                         , type=bool)
+tornado.options.define("xheaders", default=False, help="If xheaders is True, "\
+                        "we support the X-Real-Ip/X-Forwarded-For and X-Scheme/X-"\
+                        "Forwarded-Proto headers, which override the remote IP and "\
+                        "URI scheme/protocol for all requests. These headers are "\
+                        "useful when running Tornado behind a reverse proxy or load balancer. "
+                        , type=bool)
 tornado.options.define("compress_response", default=False, help="Open it if "\
                         "you want to compress the response.", type=bool)
 tornado.options.define("config_file", default="config.ini", help="Define "\
@@ -17,6 +23,8 @@ tornado.options.define("document_location", default="documents", help="Redefine"
                         " the location of your documents. DO NOT ADD SLASHES AFTER"\
                         " YOUR LOCATION!")
 tornado.options.define("domain", default="localhost", help="URL displayed")
+tornado.options.define("comment", default=False)
+tornado.options.define("comment_js", default="")
 tornado.options.parse_command_line()
 try:
     a=open(tornado.options.options.config_file)
@@ -46,13 +54,14 @@ application = tornado.web.Application([
 
     (r"^/page\.aspx/*$", "controller.page.SpecialPageListHandler"),
     (r"^/page\.aspx/((?:[\w\-!():.,\[\]]|(?:%20))+)$", "controller.page.SpecialPageHandler")
- #   (r"^/abc/.*$", "controller.testdemo.TestHandler")
 ], **setting)
 
 # Server loop
 if __name__ == "__main__":
     try:
-        application.listen(
+        http_server = tornado.httpserver.HTTPServer(application,
+                                 xheaders=tornado.options.options.xheaders)
+        http_server.listen(
                         port=tornado.options.options.port,\
                         address=tornado.options.options.addr
                             )
