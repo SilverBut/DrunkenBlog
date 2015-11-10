@@ -2,7 +2,7 @@
 
 {% block pagetitle %}{% try %}{{ pagetitle }}{% except %}Bird's eye{% end %}{% end %}
 {% block contents %}
-				<h1>{% try %}{% try %}{{ pagetitle }}{% except %}Bird's eye{% end %}</h1>
+				<h1>{% try %}{{ pagetitle }}{% except %}Bird's eye{% end %}</h1>
 				<div class="article_list">
 					<ul class="article_list">
 {% for item in articleList %}
