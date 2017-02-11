@@ -4,6 +4,21 @@ Drunken is a simple blog structure following Apache license. It synchronously up
 
 The blog is still under development now.
 
+## Legal Statement
+
+Copyright of this repo belongs to Silver.
+
+Unless otherwise stated, you are requested to follow GPLv3 to use code in this repo.
+
+The following related parts are NOT allowed to use this code, unless a statement is signed and published by the author:
+
+* Humensec (http://www.humensec.com)
+* Network Behaviour Research Center (NBRC) in Xidian University (http://nbrc.xidian.edu.cn)
+* School of Cyber Engineering of Xidian University (http://ce.xidian.edu.cn)
+* Leaders, researchers, students and any other people directly related to entities above
+
+ANY POSSIBLE actions will be committed if this statement had been violated.
+
 ## Blog Structure 
 
 Based on Markdown files to format the article, and use simple file storage techs to save the markdown file. A built-in render is used to convert markdown files to rendered HTML parts and meta infos. Use Disqus as the comment tool. 
