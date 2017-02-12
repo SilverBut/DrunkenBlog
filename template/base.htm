@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>{% block pagetitle %}None{% end %}</title>
+		<title>{% block pagetitle %}None{% end %} - Silver's Blog</title>
 		<meta charset="utf-8">
 
 		<!--some seo optims-->
@@ -15,15 +15,15 @@
 
     	<!---styles and scripts-->
     	<link rel="Stylesheet" type="text/css" href="{{ static_url("style.css") }}">
-		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css">
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+		<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.5.0/styles/tomorrow-night.min.css">
+		<script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="header">
 				<h1 class="title">Silver</h1>
-	      		<h2 class="description">一个高尚的人，一个纯粹的人，一个有道德的人，<br>一个脱离了低级趣味的人，一个有益于人民的人。<!--A boy who wants to investigate more...--></h2>
+	      		<h2 class="description">{% block mtxt %}{% if motto_text %}{% raw motto_text %}{% else %}一个高尚的人，一个纯粹的人，一个有道德的人，<br>一个脱离了低级趣味的人，一个有益于人民的人。{% end %}{% end %}<!--A boy who wants to investigate more...--></h2>
 	      		<div class="navibar">
 		        	<ul class="navimenu">
 						<li><a href="/">Homepage</a></li>
@@ -47,8 +47,6 @@
 			<div class="contact">
 				<p class="contact_text">
 					Contact webmaster at: <br>
-					<span class="contact_email">&lt;webmaster{conv to at}sonyis.science&gt;
-					</span>
 				</p>
 			</div>
 		</div>
