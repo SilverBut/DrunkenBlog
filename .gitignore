@@ -1,5 +1,7 @@
 # Site config file
 config.ini
+motto.txt
+static/robots.txt
 
 # Documents
 documents/

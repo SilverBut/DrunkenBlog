@@ -14,7 +14,7 @@ from markdown.extensions.fenced_code import FencedCodeExtension
 from markdown.extensions.smart_strong import SmartEmphasisExtension
 from markdown.extensions.tables import TableExtension
 
-from extends import gfm
+#from extends import gfm
 from markdown.extensions.nl2br import Nl2BrExtension
 
 
@@ -46,16 +46,25 @@ class PartialGithubFlavoredMarkdownExtension(Extension):
         SmartEmphasisExtension().extendMarkdown(md, md_globals)
         TableExtension().extendMarkdown(md, md_globals)
 
+        #gfm.AutolinkExtension().extendMarkdown(md, md_globals)
+        #gfm.AutomailExtension().extendMarkdown(md, md_globals)
+        #gfm.HiddenHiliteExtension([
+        #    ('guess_lang', 'False'),
+        #    ('css_class', 'highlight')
+        #]).extendMarkdown(md, md_globals)
+        #gfm.SemiSaneListExtension().extendMarkdown(md, md_globals)
+        #gfm.SpacedLinkExtension().extendMarkdown(md, md_globals)
+        #gfm.StrikethroughExtension().extendMarkdown(md, md_globals)
         # Custom extensions
-        gfm.AutolinkExtension().extendMarkdown(md, md_globals)
-        gfm.AutomailExtension().extendMarkdown(md, md_globals)
-        gfm.HiddenHiliteExtension([
+        AutolinkExtension().extendMarkdown(md, md_globals)
+        AutomailExtension().extendMarkdown(md, md_globals)
+        HiddenHiliteExtension([
             ('guess_lang', 'False'),
             ('css_class', 'highlight')
         ]).extendMarkdown(md, md_globals)
-        gfm.SemiSaneListExtension().extendMarkdown(md, md_globals)
-        gfm.SpacedLinkExtension().extendMarkdown(md, md_globals)
-        gfm.StrikethroughExtension().extendMarkdown(md, md_globals)
+        SemiSaneListExtension().extendMarkdown(md, md_globals)
+        SpacedLinkExtension().extendMarkdown(md, md_globals)
+        StrikethroughExtension().extendMarkdown(md, md_globals)
         
 
 class GithubFlavoredMarkdownExtension(PartialGithubFlavoredMarkdownExtension):
