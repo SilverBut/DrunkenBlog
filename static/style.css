@@ -289,7 +289,7 @@ code {
 
 /*content overflow*/
 .content{
-  word-break:break-all;
+  /*word-break:break-all;*/
 }
 
 #articleLastUpdate {
