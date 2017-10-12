@@ -1,6 +1,6 @@
 # DrunkenBlog 
 
-Drunken is a simple blog structure following Apache license. It synchronously updates with [Silver's Blog](http://sonyis.science). The blog is based on Python, and use Markdown as its source.
+Drunken is a simple blog structure following Apache license. It synchronously updates with [Silver's Blog](https://blog.iret.xyz). The blog is based on Python, and use Markdown as its source.
 
 The blog is still under development now.
 
