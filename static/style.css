@@ -281,7 +281,7 @@ code {
 
 /*table of contents*/
 .toc{
-  float:left;
+  float:right;
   max-width:15rem;
   margin:0 10px;
   word-break:break-all;
