@@ -16,10 +16,10 @@
     	<!---styles and scripts-->
     	<link rel="Stylesheet" type="text/css" href="{{ static_url("style.css") }}">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night.min.css">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script data-cfasync="true" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		{% if google_analytics %}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id={% raw google_analytics %}"></script>
+		<script async data-cfasync="false" src="https://www.googletagmanager.com/gtag/js?id={% raw google_analytics %}"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
@@ -48,7 +48,7 @@
 				{% end %}
 			</div>
 		</div>
-		<script>hljs.initHighlightingOnLoad();</script>
+		<script data-cfasync="false">hljs.initHighlightingOnLoad();</script>
 		<div class="bottom">
 			<div class="copyright">
 				<p class="copyright_text">
