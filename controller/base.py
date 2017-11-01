@@ -55,9 +55,9 @@ class BaseHandler(tornado.web.RequestHandler):
             commentinfo['url']="//"+self.opts.domain+self.request.uri
             commentinfo['identifier']=self.request.uri
             commentinfo['jsaddr'] = self.opts.comment_js
-            super(BaseHandler, self).render(template_name, commentinfo=commentinfo, motto_text=motto_single, *args, **kwargs)
+            super(BaseHandler, self).render(template_name, google_analytics=self.opts.google_analytics, commentinfo=commentinfo, motto_text=motto_single, *args, **kwargs)
         else:
-            super(BaseHandler, self).render(template_name, motto_text=motto_single, *args, **kwargs)
+            super(BaseHandler, self).render(template_name, google_analytics=self.opts.google_analytics, motto_text=motto_single, *args, **kwargs)
 
 class NotFoundHandler(BaseHandler):
     def get(self, *args, **kwargs):

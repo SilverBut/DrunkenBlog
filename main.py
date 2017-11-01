@@ -25,6 +25,7 @@ tornado.options.define("document_location", default="documents", help="Redefine"
 tornado.options.define("domain", default="localhost", help="URL displayed")
 tornado.options.define("comment", default=False)
 tornado.options.define("comment_js", default="")
+tornado.options.define("google_analytics", default="", help="Fill if you have a google analysis script")
 tornado.options.parse_command_line()
 try:
     a=open(tornado.options.options.config_file)
