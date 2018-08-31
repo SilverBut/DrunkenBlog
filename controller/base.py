@@ -29,7 +29,9 @@ def getrandmotto():
 	if not MOTTO_CHANGE == filestat('motto.txt').st_mtime:
 		MOTTO_TEXT = open('motto.txt', 'r', encoding='utf-8').readlines()
 		MOTTO_CHANGE = filestat('motto.txt').st_mtime
-	return randchoice(MOTTO_TEXT)
+	motto = randchoice(MOTTO_TEXT)
+	back_str = "%s <!-- %d -->" % ( motto, MOTTO_CHANGE )
+	return back_str
 
 class BaseHandler(tornado.web.RequestHandler):
     def __init__(self, *args, **kwargs):
