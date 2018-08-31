@@ -5,6 +5,7 @@ from random import choice as randchoice
 import tornado.options
 from tornado import gen
 from os import stat as filestat
+from time import time as ctime
 
 def error_process(obj, status_code, **kwargs):
     msgtext=str((kwargs['exc_info'][1]))
@@ -29,8 +30,9 @@ def getrandmotto():
 	if not MOTTO_CHANGE == filestat('motto.txt').st_mtime:
 		MOTTO_TEXT = open('motto.txt', 'r', encoding='utf-8').readlines()
 		MOTTO_CHANGE = filestat('motto.txt').st_mtime
-	motto = randchoice(MOTTO_TEXT)
-	back_str = "%s <!-- %d -->" % ( motto, MOTTO_CHANGE )
+	motto_idx = int( (10 * ctime()) % len(MOTTO_TEXT) )
+	motto = MOTTO_TEXT[motto_idx]
+	back_str = "%s <!-- %d %d -->" % ( motto, MOTTO_CHANGE, motto_idx )
 	return back_str
 
 class BaseHandler(tornado.web.RequestHandler):
